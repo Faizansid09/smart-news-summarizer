@@ -114,18 +114,18 @@ def save_to_s3(articles, bucket_name='news-summarizer-bucket-faizan-2024'):
         return False
 
 def main():
-    print("🗞️  Smart News Summarizer - AWS Version")
+    print("  Smart News Summarizer - AWS Version")
     print("=" * 80)
     
     # Step 1: Fetch news
-    print("\n📰 Step 1: Fetching news from NewsAPI...")
+    print("\n Step 1: Fetching news from NewsAPI...")
     articles = fetch_worldwide_news(
         query='artificial intelligence',
         page_size=5
     )
     
     if not articles:
-        print("❌ No articles fetched. Exiting.")
+        print("No articles fetched. Exiting.")
         return
     
     # Display articles
@@ -135,14 +135,14 @@ def main():
         print("-" * 80)
     
     # Step 2: Save to DynamoDB
-    print("\n💾 Step 2: Saving to DynamoDB...")
+    print("\n Step 2: Saving to DynamoDB...")
     save_to_dynamodb(articles)
     
     # Step 3: Save to S3
-    print("\n☁️  Step 3: Saving to S3...")
+    print("\n  Step 3: Saving to S3...")
     save_to_s3(articles)
     
-    print("\n✅ All done! Check your AWS Console to see the data.")
+    print("\n All done! Check your AWS Console to see the data.")
 
 if __name__ == "__main__":
     main()
